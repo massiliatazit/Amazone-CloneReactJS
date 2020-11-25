@@ -1,30 +1,35 @@
 import React from "react";
+
 import "./home.css";
 
-import { Container, Jumbotron, Button } from "react-bootstrap";
+import { Container, Jumbotron, Button, Row } from "react-bootstrap";
+import Product from "./Product";
 
 function Home() {
   return (
-    <div>
-      <div className="home">
-        <Jumbotron fluid className="jumbotronhome">
-          <div className="JumbotronContent">
-            <h1>Watch movies and TV shows</h1>
+    <div className="home">
+      <div className="home_container px-0">
+        <img
+          className="home_image"
+          src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2020/BlackFriday/Fuji_TallHero_BFWeek_v1_en_US_1x._CB415746974_.jpg"
+          style={{ height: "600px", width: "2000px" }}
+          alt="home image"
+        ></img>
+        <div className="home_row d-flex justify-content-around">
+          <Product />
+          <Product />
+          <Product />
 
-            <p className="my-5">
-              Enjoy exclusive Amazon Originals as well as popular movies and TV
-              shows. Join Prime Video now for €5.99 per month. Cancel anytime..
-            </p>
-            <p>
-              <Button variant="primary" className="jumbotronbtn">
-                Start your free trial
-              </Button>
-            </p>
-            <div className="membershiptext">
-              <p>Membership renews at € 5.99/month.</p>
-            </div>
-          </div>
-        </Jumbotron>
+          <Product />
+        </div>
+        <div className="home_row">
+          <Product />
+          <Product />
+          <Product />
+
+          <Product />
+        </div>
+        <div className="home_row"></div>
       </div>
     </div>
   );
