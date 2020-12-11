@@ -4,7 +4,7 @@ import { Button, Modal ,Form} from "react-bootstrap";
 class AddProduct extends React.Component {
 
     state={
-        show:false,
+       
         loading:false,
 
         product:{
@@ -12,9 +12,10 @@ class AddProduct extends React.Component {
             description:"",
             brand:"",
             price:"",
-            category:""
+            category:"book"
         },
         formData: null,
+        show:true,
 
     }
     updateField = (e) => {
@@ -61,23 +62,13 @@ class AddProduct extends React.Component {
 
     EditFetch = async () => {
 		
-		let response
+		
 
 		try {
-			if (this.props._id) {
-				const url = `http://localhost:4001/products/${this.props._id}`
-				response = await fetch(url , {
-					method: "PUT",
-					body: JSON.stringify(this.state.product),
-					headers: new Headers({
-						"Content-Type": "application/json",
-
-						
-					}),
-				})
-			} else {
-				response = await fetch(
-					`http://localhost:4001/products/`,
+			
+			
+				let response = await fetch(
+					`http://localhost:4001/products`,
 					{
 						method: "POST",
 						body: JSON.stringify(this.state.product),
@@ -89,7 +80,7 @@ class AddProduct extends React.Component {
 						}),
 					}
 				)
-			}
+			
 
 			if (response.ok) {
 				let res= await response.json()
@@ -161,24 +152,24 @@ class AddProduct extends React.Component {
     submitForm = (e) => {
 		e.preventDefault()
 		this.setState({ loading: true })
-		this.postProduct()
+		this.EditFetch()
     }
     postProduct=async()=>{ let ProductId = await this.EditFetch();this.UploadImageFetch(ProductId._id)}
+
     handleShow = () => this.setState({ show: true})
     handleClose = () => this.setState({ show:false }) 
 
     render(){
         return(
             <>
-            <Button variant="warning"  className="mx-5" onClick={this.handleShow} >Add a New Product</Button>
+            <Button variant="warning"  className="mx-5" onClick={()=>this.setState({show:true})}  >Add a New Product</Button>
+            {this.state.show && (
             <Modal show={this.state.show} onHide={this.handleClose}>
 					<Modal.Header closeButton>
 						<Modal.Title>
-							{this.props._id ? (
-								<p>Edit/Delete Product</p>
-							) : (
+							
 								<p>Add New Product</p>
-							)}
+						
 						</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
@@ -233,23 +224,11 @@ class AddProduct extends React.Component {
 								/>
                                 <p>$</p>
 							</Form.Group>
-                            <Form.Group>
-								<Form.Label>Price*</Form.Label>
-
-								<Form.Control
-									id="price"
-									type="number"
-									value={this.state.product.price} 
-									onChange={this.updateField}
-									placeholder="Ex: 567"
-									required
-								/>
-                                <p>$</p>
-							</Form.Group>
+                            
 
                             <Form.Group>
 								<Form.Label htmlFor="category">
-									Employment Type
+									Category
 								</Form.Label>
 								<Form.Control
 									as="select"
@@ -266,7 +245,7 @@ class AddProduct extends React.Component {
 								</Form.Control>
 							</Form.Group>
                             <Form.Group className="d-flex px-3">
-								{this.props._id && (
+								
 									<Button
 										className=" deleteBtn"
 										variant="primary"
@@ -274,7 +253,7 @@ class AddProduct extends React.Component {
 									>
 										Delete
 									</Button>
-								)}
+								
 								<Button
 									className="saveBtn ml-auto"
 									variant="primary"
@@ -291,7 +270,8 @@ class AddProduct extends React.Component {
 						
 						</Form>
 					</Modal.Body>
-				</Modal>
+                </Modal>
+                )}
         
             </>
 

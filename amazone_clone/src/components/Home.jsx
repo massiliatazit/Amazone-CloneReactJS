@@ -17,7 +17,7 @@ function Home() {
           style={{ height: "600px", width: "2000px" }}
           alt="home image"
         ></img>
-        <AddProduct _id=" "/>
+        <AddProduct />
         
         <div className="home_row d-flex justify-content-around">
          
