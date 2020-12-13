@@ -2,11 +2,13 @@ import React from "react";
 
 import "./home.css";
 
-import { Container, Jumbotron, Button, Row } from "react-bootstrap";
+import { Container, Jumbotron, Button, Row} from "react-bootstrap";
+import AddProduct from "./AddProduct.jsx";
 import Product from "./Product";
 
 function Home() {
   return (
+    <Container>
     <div className="home">
       <Container fluid className=" px-0">
         <img
@@ -15,7 +17,13 @@ function Home() {
           style={{ height: "600px", width: "100%" }}
           alt="home image"
         ></img>
+
         <Row>
+
+        <AddProduct />
+        
+        <div className="d-flex justify-content-around">
+
           <Product />
           <Product />
           <Product />
@@ -23,15 +31,25 @@ function Home() {
           <Product />
         </Row>
         {/* <div className="home_row">
+
+         
+        </div>
+        <div className="home_row">
+
           <Product />
           <Product />
           <Product />
 
+ GetProducts/Frontend
           <Product />
         </div> */}
+
+        </div>
+
         <div className="home_row"></div>
       </Container>
     </div>
+    </Container>
   );
 }
 
