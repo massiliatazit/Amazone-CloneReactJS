@@ -21,7 +21,11 @@ function Home() {
           <AddProduct />
 
           <Row className="d-flex justify-content-around">
-            <Product {...this.props} />
+            <Product
+              onClick={() =>
+                this.props.history.push(`/details/ + ${product._id}`)
+              }
+            />
             <Product />
           </Row>
           {/* <div className="home_row">
