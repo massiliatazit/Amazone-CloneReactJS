@@ -92,12 +92,13 @@ class AddProduct extends React.Component {
   };
 
   UploadImageFetch = (id) => {
-    fetch(`http://localhost:4001/products/` + id + "/upload", {
+    fetch(`http://localhost:4001/products/${id}/upload` , {
       method: "POST",
-      body: this.state.formData,
-      headers: new Headers({}),
+      body: this.state.formData
+     
     })
       .then((response) => response.json())
+      
 
       .catch((error) => {
         console.error(error);
@@ -108,11 +109,14 @@ class AddProduct extends React.Component {
   submitForm = (e) => {
     e.preventDefault();
     this.setState({ loading: true });
-    this.EditFetch();
+    this.postProduct()
   };
   postProduct = async () => {
     let ProductId = await this.EditFetch();
-    this.UploadImageFetch(ProductId._id);
+    
+   this.UploadImageFetch(ProductId._id);
+    
+    
   };
 
   handleShow = () => this.setState({ show: true });
@@ -187,6 +191,16 @@ class AddProduct extends React.Component {
                   />
                   <p>$</p>
                 </Form.Group>
+
+                <Form.Group>
+								<Form.Label>Change the Image</Form.Label>
+								<Form.Control
+									id="fileUpload"
+									type="file"
+									onChange={this.handleImageUpload}
+									required
+								/>
+							</Form.Group>
 
                 <Form.Group>
                   <Form.Label htmlFor="category">Category</Form.Label>
