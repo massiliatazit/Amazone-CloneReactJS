@@ -25,6 +25,7 @@ class Product extends React.Component {
     this.fetchProducts();
   };
   render() {
+    console.log(this.props.history);
     return (
       <>
         {this.state.products.map((product) => (
