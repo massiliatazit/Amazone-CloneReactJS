@@ -13,7 +13,6 @@ import {
 export default class Details extends Component {
   state = {
     Review: {
-      name: "",
       comment: "",
       rate: null,
       elementId: this.props.match.params.id,
@@ -66,7 +65,6 @@ export default class Details extends Component {
         alert("New Review saved!");
         this.setState({
           Review: {
-            name: "",
             comment: "",
             rate: null,
             elementId: this.props.match.params.id,
@@ -91,6 +89,7 @@ export default class Details extends Component {
     }
   };
   render() {
+    console.log(this.props);
     return (
       <>
         {this.state.loading && (
@@ -112,21 +111,6 @@ export default class Details extends Component {
               style={{ flexDirection: "column" }}
               onSubmit={this.submitReview}
             >
-              <Col md={6}>
-                <Form.Group>
-                  <Form.Label htmlFor="name">Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Your name"
-                    value={this.state.Review.name}
-                    onChange={this.updateReviewField}
-                    required
-                  />
-                </Form.Group>
-              </Col>
-
               <Col md={6}>
                 <Form.Group>
                   <Form.Label htmlFor="comment">Comment</Form.Label>

@@ -37,7 +37,14 @@ class Product extends React.Component {
                   <img src={product.imageUrl} alt="" />
                   <p className="text-center text-muted">{product.price}</p>
                 </Card.Body>
-                <p> Show more </p>
+                <p
+                  onClick={() =>
+                    this.props.history.push(`/details/${product._id}`)
+                  }
+                >
+                  {" "}
+                  Show more{" "}
+                </p>
               </Card>
             </Col>
           </div>
