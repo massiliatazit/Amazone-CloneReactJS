@@ -1,6 +1,6 @@
 import React from "react";
 import "./product.css";
-import { Card, Col, Container, spinner, Alert } from "react-bootstrap";
+import { Card, Col,  Alert } from "react-bootstrap";
 
 class Product extends React.Component {
   state = { products: [], loading: true };
