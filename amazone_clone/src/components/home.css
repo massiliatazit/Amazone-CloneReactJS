@@ -2,8 +2,8 @@
 .home{
     display:flex;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
     width: 100%;
   
    
@@ -23,8 +23,8 @@
 .home_row{
     display: flex;
     z-index: 100; 
-    margin-left: 5px; 
-    margin-right: 5px;
+    /* margin-left: 5px; 
+    margin-right: 5px; */
     margin-top:0px;
     
  
