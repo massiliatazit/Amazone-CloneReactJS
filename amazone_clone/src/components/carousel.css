@@ -1,0 +1,57 @@
+.carousel {
+    position: relative;
+  }
+  .ind,
+.upper-indicator {
+  position: absolute;
+  bottom: -40px;
+}
+.ind li,
+.upper-indicator li {
+  background-color: #949494;
+  height: 2px;
+  width: 40px;
+}
+  .slider-btn-left,
+  .slider-btn-right {
+    position: absolute;
+    background-color: #616161;
+    border-radius: 50px;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    opacity: 1;
+    border: 4px solid #d8d8d8;
+  }
+  
+  .slider-btn-left {
+    left: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .slider-btn-right {
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .target {
+    position: relative;
+  }
+  .carousel-text {
+    position: absolute;
+    bottom: 10px;
+  }
+  .btn-add {
+    background-color: #a1d242;
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .price {
+    color: #fff;
+    font-weight: 600;
+    font-size: 22px;
+  }

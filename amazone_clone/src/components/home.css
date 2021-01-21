@@ -1,4 +1,7 @@
-
+.hero {
+    object-fit: contain;
+    height: 100vh;
+}
 .home{
     display:flex;
     justify-content: center;
@@ -32,3 +35,121 @@
     
 
 }
+.heroCol {
+    flex-direction: column;
+    text-align: left !important;
+    padding: 0 140px;
+}
+
+.heroH4 {
+    margin-top: 20px;
+    z-index: 5;
+}
+
+.bottomImageHero {
+   
+    max-width: 100%;
+    max-height: 50%;
+    z-index: -10000;
+    mask-image:linear-gradient(to bottom, rgb(155, 150, 150), rgba(0,0,0,0));
+    margin-bottom: -300px;
+    border:0;
+    margin-right: 0;
+}
+
+.firstImageCol,
+.secondImageCol {
+
+    height: 100vh;
+}
+
+.topImageHero {
+   
+    height: 500px;
+    width: 380px;
+}
+
+  
+  
+.abstract {
+   
+    
+    margin: auto;
+    width: 500px;
+}
+
+.heroH1 {
+    margin-top: 60px;
+    z-index: 5;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+@media(max-width: 1090px) {
+    .heroH1 {
+        margin-top: 60px;
+        z-index: 5;
+        font-size: 30px !important;
+        font-weight: 700;
+    }
+
+    .heroCol {
+        flex-direction: column;
+        text-align: left !important;
+        padding: 0 50px;
+    }
+}
+
+@media(max-width: 800px) {
+    .topImageHero {
+        display: none;
+    }
+}
+
+@media(max-width: 768px) {
+    .heroCol {
+        margin-top: 100px;
+        padding: 0 80px;
+    }
+
+    .firstImageCol {
+        top: -40px;
+    }
+
+    .bottomImageHero {
+        position: absolute;
+        top: 60px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 2;
+        height: 450px;
+        width: 320px;
+    }
+
+    .abstract {
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 80px;
+        right: 0;
+        width: 350px;
+    }
+}
+.aws-btn {
+
+    --slider-height-percentage: 23%;
+    --slider-transition-duration: 738ms;
+    --organic-arrow-thickness: 5px;
+    --organic-arrow-border-radius: 4px;
+    --organic-arrow-height: 40px;
+    --organic-arrow-color: #26456f;
+    --control-button-width: 10%;
+    --control-button-height: 25%;
+    --control-button-background: transparent;
+    --control-bullet-color: #2d5182;
+    --control-bullet-active-color: #26456f;
+    --loader-bar-color: #851515;
+    --loader-bar-height: 6px;
+    }

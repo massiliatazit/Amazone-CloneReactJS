@@ -2,7 +2,10 @@
   text-align: center;
 
 } */
-
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap');
+.App{font-family: 'Fraunces', serif;
+  background-color: #FBF7F4;
+ }
 .App-logo {
   height: 40vmin;
   pointer-events: none;

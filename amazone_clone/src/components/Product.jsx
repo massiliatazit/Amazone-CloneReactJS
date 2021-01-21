@@ -1,55 +1,58 @@
-import React from "react";
-import "./product.css";
-import { Card, Col,  Alert } from "react-bootstrap";
+import React, { Component } from "react";
+import { Card, Button, Col } from "react-bootstrap";
 
-class Product extends React.Component {
-  state = { products: [], loading: true };
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import "./Product.css";
 
-  fetchProducts = async () => {
-    this.setState({ loading: true });
-    try {
-      const response = await fetch("http://localhost:4001/products/");
-      let products = await response.json();
-      console.log(products);
-      if (response.ok) {
-        this.setState({ products, loading: false });
-      } else {
-        this.setState({ loading: false });
-        <Alert variant="danger">Something went wrong</Alert>;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  componentDidMount = () => {
-    this.fetchProducts();
-  };
+class Product extends Component {
   render() {
-    console.log(this.props.history);
     return (
-      <>
-        {this.state.products.map((product) => (
-          <div className="card_container">
-            <Col sm={6} md={3} lg={4} className="card_col">
-              <Card style={{ width: "18rem" }} className="product mb-2">
-                <h2> {product.name}</h2>
-                <Card.Body>
-                  <img src={product.imageUrl} alt="" />
-                  <p className="text-center text-muted">{product.price}</p>
-                </Card.Body>
-                <p
-                  onClick={() =>
-                    this.props.history.push(`/details/${product._id}`)
-                  }
-                >
-                  {" "}
-                  Show more{" "}
-                </p>
-              </Card>
-            </Col>
+      <Col
+        lg={3}
+        md={6}
+        sm={12}
+        className="d-flex justify-content-center"
+        key={this.props.product._id}
+      >
+        <Card className="card p-1 mb-2 mt-3">
+          <div className="addToCart mb-2">
+            <AddShoppingCartIcon
+              className="addToCartIcon"
+              onClick={() => this.props.add(this.props.product._id)}
+            />
           </div>
-        ))}
-      </>
+          <img
+            variant="top"
+            src={this.props.product.imgURL}
+            className="product-image"
+            alt="product"
+          />
+          <Card.Body>
+            <Card.Title className="name">{this.props.product.name}</Card.Title>
+            <Card.Text className="description">
+              {this.props.product.description}
+            </Card.Text>
+            <div className="m-0 p-0 d-flex justify-content-between align-items-center text-center">
+              <a
+                variant="primary"
+                className="productDetails"
+                onClick={() =>
+                  this.props.props &&
+                  this.props.props.props.history.push(
+                    "/details/" + this.props.product._id
+                  )
+                }
+              >
+                Show more
+              </a>
+
+              <p className="text-right text-muted m-0 p-0 price">
+                {this.props.product.price} €
+              </p>
+            </div>
+          </Card.Body>
+        </Card>
+      </Col>
     );
   }
 }

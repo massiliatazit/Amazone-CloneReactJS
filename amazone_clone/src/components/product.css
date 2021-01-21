@@ -1,43 +1,85 @@
-.product{
-    display: flex;
+.card {
  
-    align-items: center;
-     background-color:#fff;
-   
-    
+ 
   
-    width: 100%;
-    max-height: 400px;
-    min-width: 100px;
-   z-index: 1;
-   margin: 0px;
-   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  
+  margin-bottom: 20px;
+  background-color: transparent;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+  max-width: 332px;
+  align-items: center;
 
+  z-index: 22222;
 }
-.card_container{
-    padding:0 ;
-}
-.product > img{
-    object-fit: contain;
-    margin:10px;
-    margin-bottom: 15px;
-    width: 100%;
-
-}
-.card_col{
-    max-width: 400px;
+.name,.price{
+  font-weight: 600;
 }
 
-  
-  .product__price {
-    margin-top: 5px;
-  }
-  
-  .product__info {
-    height: 100px;
-    position:absolute;
-    top:0;
-    margin-bottom: 15px;
-    overflow: hidden;
-  }
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.reviewMedia {
+  border-right: 6px solid #010101;
+  margin: 20px 0;
+  border-radius: 13px;
+  padding: 10px;
+  box-shadow: 3px 3px 16px rgba(0, 0, 0, 0.2);
+}
+
+.rateBadge {
+  background-color: #010101;
+  color: white;
+  width: 60px;
+  padding: 3px;
+}
+
+.product-image {
+  height: 300px;
+  width: 80%;
+  z-index: -2000;
+  object-fit: cover;
+  transition: .50ms ease-in-out;
+  filter: drop-shadow(2px 4px 8px #0000007a);
+}
+
+.selectCategory {
+  background-color: #010101;
+  color: #fff;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+.productDetails{
+  color:black;
+  cursor: pointer;
+
+}
+.jumbotronImage {
+  background-image: url("https://images.totalbeauty.com/content/photos/soap_bubble_nails_mani_monday_slide.jpg");
+  background-color: transparent;
+  background-size: cover;
+}
+
+.addToCart {
+  display: flex !important;
+  justify-content: flex-end !important;
+  text-align: right !important;
+  width: 100%;
+  padding: 15px 15px 0 0;
+}
+
+.addToCartIcon {
+  cursor: pointer;
+  font-size: 22px;
+  transition: .30s ease-in-out;
+}
+
+.addToCartIcon:hover {
+  color: rgb(17, 17, 17);
+  transition: .30s ease-in-out;
+}
