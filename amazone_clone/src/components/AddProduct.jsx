@@ -13,7 +13,7 @@ class AddProduct extends React.Component {
       category: "book",
     },
     formData: null,
-    show: true,
+    show: false,
   };
   updateField = (e) => {
     let product = { ...this.state.product };
@@ -87,33 +87,47 @@ class AddProduct extends React.Component {
   handleImageUpload = (event) => {
     console.log("target", event.target);
     const formData = new FormData();
-    formData.append("product", event.target.files[0]);
+    formData.append("image", event.target.files[0]);
     this.setState({ formData });
   };
 
-  UploadImageFetch = (id) => {
-    fetch(`http://localhost:4001/products/` + id + "/upload", {
+  UploadImageFetch = async (id) => {
+   
+    try{
+    let response = await fetch(
+      `http://localhost:4001/products/${id}/upload`,
+
+    {
       method: "POST",
       body: this.state.formData,
-      headers: new Headers({}),
-    })
-      .then((response) => response.json())
-
-      .catch((error) => {
-        console.error(error);
-      });
-    this.handleClose();
+     
+    }
+  )
+  
+  if (response.ok){
+    let result=response.json()
+    alert("Product saved!")
+    this.setState({loading:false})
+    console.log(result)
+    this.handleClose() }
+  }
+  catch(e){console.log(e)}
+      
   };
 
   submitForm = (e) => {
     e.preventDefault();
     this.setState({ loading: true });
-    this.EditFetch();
+    this.postProduct()
   };
   postProduct = async () => {
     let ProductId = await this.EditFetch();
-    this.UploadImageFetch(ProductId._id);
+    console.log(ProductId)
+   this.UploadImageFetch(ProductId._id);
+    
+    
   };
+  //
 
   handleShow = () => this.setState({ show: true });
   handleClose = () => this.setState({ show: false });
@@ -122,11 +136,12 @@ class AddProduct extends React.Component {
     return (
       <>
         <Button
+         style ={{zIndex:"999", position:"absolute", top:"0px", }}
           variant="warning"
           className="mx-5"
           onClick={this.handleShow}
         >
-          Add a New Product
+          Add a New Product 
         </Button>
         {this.state.show && (
           <Modal show={this.state.show} onHide={this.handleClose}>
@@ -187,6 +202,16 @@ class AddProduct extends React.Component {
                   />
                   <p>$</p>
                 </Form.Group>
+
+                <Form.Group>
+								<Form.Label>Change the Image</Form.Label>
+								<Form.Control
+									id="fileUpload"
+									type="file"
+									onChange={this.handleImageUpload}
+									required
+								/>
+							</Form.Group>
 
                 <Form.Group>
                   <Form.Label htmlFor="category">Category</Form.Label>
