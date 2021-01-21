@@ -8,14 +8,16 @@ export default class Listproduct extends Component {
     products: [],
     alert: false,
     errorAlert: false,
+    loading: true,
   };
 
   componentDidMount = async () => {
     let products = await fetchProducts();
-    this.setState({ products });
+    this.setState({ products, loading: false });
   };
 
   render() {
+    console.log(this.state.products);
     return (
       <Container
         className="mt-5 pt-5 d-flex justify-content-center"
