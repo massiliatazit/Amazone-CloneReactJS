@@ -1,6 +1,6 @@
 export async function fetchProducts() {
   try {
-    let response = await fetch(`http://localhost:5001/products`);
+    let response = await fetch(`http://localhost:6001/products`);
     if (response.ok) {
       let data = await response.json();
       return data;
@@ -14,7 +14,7 @@ export async function fetchProducts() {
 
 export async function fetchSingleProduct(id) {
   try {
-    let response = await fetch(`http://localhost:5001/products/${id}`);
+    let response = await fetch(`http://localhost:6001/products/${id}`);
     if (response.ok) {
       let data = await response.json();
       return data;
@@ -29,7 +29,7 @@ export async function fetchSingleProduct(id) {
 export async function fetchProductsByCategory(category) {
   try {
     let response = await fetch(
-      `http://localhost:5001/products?category=${category}`
+      `http://localhost:6001/products?category=${category}`
     );
     if (response.ok) {
       let data = await response.json();
