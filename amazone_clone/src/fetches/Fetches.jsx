@@ -45,7 +45,7 @@ export async function fetchProductsByCategory(category) {
 
 export async function getReviews(id) {
   try {
-    let response = await fetch(`http://localhost:5001/products/${id}/reviews/`);
+    let response = await fetch(`http://localhost:6001/products/${id}/reviews/`);
     if (response.ok) {
       let data = await response.json();
       return data;
@@ -59,7 +59,7 @@ export async function getReviews(id) {
 
 export async function getCartItem() {
   try {
-    let response = await fetch(`http://localhost:5001/cart`);
+    let response = await fetch(`http://localhost:6001/cart`);
     if (response.ok) {
       let data = await response.json();
       return data;
@@ -73,7 +73,7 @@ export async function getCartItem() {
 
 export async function deleteFromCart(id) {
   try {
-    let response = await fetch(`http://localhost:5001/cart/${id}`, {
+    let response = await fetch(`http://localhost:6001/cart/${id}`, {
       method: "DELETE",
     });
     if (response.ok) {
@@ -88,7 +88,7 @@ export async function deleteFromCart(id) {
 
 export async function completeOrder() {
   try {
-    const resp = await fetch(`http://localhost:5001/cart/items/checkout`, {
+    const resp = await fetch(`http://localhost:6001/cart/items/checkout`, {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -105,7 +105,7 @@ export async function completeOrder() {
 }
 export async function deleteProduct(id) {
   try {
-    let response = await fetch(`http://localhost:3001/products/${id}`, {
+    let response = await fetch(`http://localhost:6001/products/${id}`, {
       method: "DELETE",
     });
     if (response.ok) {
@@ -120,7 +120,7 @@ export async function deleteProduct(id) {
 
 export async function deleteReview(id) {
   try {
-    let response = await fetch(`http://localhost:3001/reviews/${id}`, {
+    let response = await fetch(`http://localhost:6001/reviews/${id}`, {
       method: "DELETE",
     });
     if (response.ok) {

@@ -15,6 +15,18 @@ export default class Listproduct extends Component {
     let products = await fetchProducts();
     this.setState({ products, loading: false });
   };
+  getProductsByCategory = async (e) => {
+    let category = e.currentTarget.value;
+    console.log(category);
+    if (category === "all") {
+      let products = await fetchProducts();
+      this.setState({ products });
+    } else {
+      let products = await fetchProductsByCategory(category);
+      console.log(products);
+      this.setState({ products });
+    }
+  };
 
   render() {
     console.log(this.state.products);
@@ -26,6 +38,23 @@ export default class Listproduct extends Component {
         <Row>
           <Col md={10}>
             {" "}
+            <Row>
+              <Col md={10}>
+                {" "}
+                <hr></hr>
+              </Col>
+              <Col md={2}>
+                sort by
+                <select
+                  className="text-center selectCategory"
+                  onChange={(e) => this.getProductsByCategory(e)}
+                >
+                  <option value="all">items</option>
+                  <option value="nails">nails</option>
+                  <option value="hair">hair style</option>
+                </select>
+              </Col>
+            </Row>
             <hr></hr>
           </Col>
         </Row>
